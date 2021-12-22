@@ -4,5 +4,5 @@
     "figma"
   ],
   "main": "plugin.ts",
-  "name": "grayscale"
+  "name": "Toggle Grayscale"
 }

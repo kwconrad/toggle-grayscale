@@ -402,7 +402,8 @@ declare global {
   type Action =
     { readonly type: "BACK" | "CLOSE" } |
     { readonly type: "URL", url: string } |
-    { readonly type: "NODE"
+    {
+      readonly type: "NODE"
       readonly destinationId: string | null
       readonly navigation: Navigation
       readonly transition: Transition | null
@@ -433,7 +434,8 @@ declare global {
   type Trigger =
     { readonly type: "ON_CLICK" | "ON_HOVER" | "ON_PRESS" | "ON_DRAG" } |
     { readonly type: "AFTER_TIMEOUT", readonly timeout: number } |
-    { readonly type: "MOUSE_ENTER" | "MOUSE_LEAVE" | "MOUSE_UP" | "MOUSE_DOWN"
+    {
+      readonly type: "MOUSE_ENTER" | "MOUSE_LEAVE" | "MOUSE_UP" | "MOUSE_DOWN"
       readonly delay: number
     }
 
@@ -646,7 +648,7 @@ declare global {
   interface DefaultFrameMixin extends
     BaseFrameMixin,
     FramePrototypingMixin,
-    ReactionMixin {}
+    ReactionMixin { }
 
   ////////////////////////////////////////////////////////////////////////////////
   // Nodes
@@ -705,7 +707,7 @@ declare global {
   interface SliceNode extends
     BaseNodeMixin, SceneNodeMixin, LayoutMixin,
     ExportMixin {
-      
+
     readonly type: "SLICE"
     clone(): SliceNode
   }
@@ -903,6 +905,6 @@ declare global {
     readonly hash: string
     getBytesAsync(): Promise<Uint8Array>
   }
-  } // declare global
+} // declare global
 
-  export {}
+export { }

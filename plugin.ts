@@ -15,18 +15,29 @@ figma.currentPage.findAll().map(n => {
 
   const fills = clone(n.fills);
   const fill = fills[0];
-  if (n.fills[0].type === "SOLID") {
-    const grayVal = getLightnessOfRGB(fill.color.r * 255, fill.color.g * 255, fill.color.b * 255);
-    fill.color.r = grayVal
-    fill.color.g = grayVal
-    fill.color.b = grayVal
-    n.fills = fills
-  }
-  if (n.fills[0].type === "IMAGE") {
-    fill.filters.saturation = -1
-    n.fills = fills
-  }
 
-})
+  const nodeType = fills[0].type
+
+  if (/GRADIENT/.test(nodeType)) {
+    fill.gradientStops.map(gFill => {
+      const grayVal = getLightnessOfRGB(gFill.color.r * 255, gFill.color.g * 255, gFill.color.b * 255);
+      gFill.color.r = grayVal;
+      gFill.color.g = grayVal;
+      gFill.color.b = grayVal;
+    })
+    n.fills = fills
+  }
+  if (nodeType === "SOLID") {
+    const grayVal = getLightnessOfRGB(fill.color.r * 255, fill.color.g * 255, fill.color.b * 255);
+    fill.color.r = grayVal;
+    fill.color.g = grayVal;
+    fill.color.b = grayVal;
+    n.fills = fills
+  }
+  if (nodeType === "IMAGE") {
+    fill.filters.saturation = -1;
+    n.fills = fills;
+  }
+});
 
 figma.closePlugin()

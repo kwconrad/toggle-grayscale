@@ -1,0 +1,8 @@
+{
+  "api": "1.0.0",
+  "editorType": [
+    "figma"
+  ],
+  "main": "plugin.ts",
+  "name": "grayscale"
+}

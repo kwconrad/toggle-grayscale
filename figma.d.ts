@@ -489,6 +489,7 @@ declare global {
   interface SceneNodeMixin {
     visible: boolean
     locked: boolean
+    fills: readonly Paint[] | typeof figma.mixed;
   }
 
   interface ChildrenMixin {
